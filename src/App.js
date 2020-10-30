@@ -1,21 +1,35 @@
 import { FormControl, MenuItem, Select } from '@material-ui/core';
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
   
   /* State = how to write a varibale in react */
-  const[countries, setCountries] = useState([
-    'usa', 'uk', 'india'
-  ]);
+  const[countries, setCountries] = useState([]);
 
   //https://disease.sh/v3/covid-19/countries
 
   /*useEffect = runs a piece of code based on given condition*/
-  //runs once
+  //runs once when code goes
   useEffect(() => {
+    //async -> send a request, wait for it, do soemthing with it
+    const getCountriesData = async () => {
+      await fetch("https://disease.sh/v3/covid-19/countries")
+      .then((response) => response.json())
+      .then((data) => {
+        //restructure
+        const countries = data.map((country) => (
+          {
+            name: country.country, //united states, united kingodm
+            value: country.countryInfo.iso2 //UK, USA, FR
+          }
+        ));
+        setCountries(countries);
+      });
+    };
+    getCountriesData();
+  }, []);
 
-  }, [countries]);
   return (
     <div className="app">
       <div className="app__header">
@@ -32,7 +46,7 @@ function App() {
           {/*loop through all the countries as show a dropdown list of all the options*/}
           {
             countries.map(country => (
-              <MenuItem value={country}>{country}</MenuItem>
+              <MenuItem value={country.value}>{country.name}</MenuItem>
             ))
           }
 
