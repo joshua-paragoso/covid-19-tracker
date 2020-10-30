@@ -5,7 +5,15 @@ import './App.css';
 function App() {
   
   /* State = how to write a varibale in react */
-  const[countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState('worldwide');
+
+  //changes value in dropdown list of what country is selected
+  const onCountryChange = async (event) => {
+    const countryCode = event.target.value;
+    console.log("works >>>>", countryCode);
+    setCountry(countryCode);
+  }
 
   //https://disease.sh/v3/covid-19/countries
 
@@ -39,11 +47,11 @@ function App() {
       
       {/*Drop down component */}
       <FormControl className="app__dropdown">
-        <Select
-          variant="outlined"
-          value="abc">
-
+        <Select variant="outlined" 
+          onChange={onCountryChange} value={country}>
+          <MenuItem value="worldwide">Worldwide</MenuItem>
           {/*loop through all the countries as show a dropdown list of all the options*/}
+          
           {
             countries.map(country => (
               <MenuItem value={country.value}>{country.name}</MenuItem>
