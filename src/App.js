@@ -19,6 +19,9 @@ function App() {
 
       {/*first commit from macbook*/}
 
+
+      {/* i am typing this to see if i can not get merge conflicts*/}
+
     </div>
   );
 }
