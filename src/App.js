@@ -1,6 +1,7 @@
 import { FormControl, MenuItem, Select } from '@material-ui/core';
 import React, { useState, useEffect} from 'react';
 import './App.css';
+import InfoBox from './InfoBox'
 
 function App() {
   
@@ -64,6 +65,11 @@ function App() {
     
     {/* InfoBoxes section */}
     <div className="app__stats">
+      <InfoBox title="Coronavirus cases" cases={10000} total={2000}/>
+
+      <InfoBox title="Recovered" cases={20000} total={3000}/>
+
+      <InfoBox title="Deaths" cases={30000} total={4000}/>
       {/*InfoBoxes title = "Coronavirus cases"*/}
       {/*InfoBoxes title = "Coronavirus recovers"*/}
       {/*InfoBoxes*/}
