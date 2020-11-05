@@ -24,3 +24,10 @@ body{
   justify-content: space-between;
 }
 
+/*when the screen breaks the length limit, do this*/
+@media (max-width: 990px){
+  .app{
+    flex-direction: column;
+  }
+
+}
