@@ -1,8 +1,9 @@
-import { FormControl, MenuItem, Select } from '@material-ui/core';
+import { FormControl, MenuItem, Select, Card, CardContent } from '@material-ui/core';
 import React, { useState, useEffect} from 'react';
 import './App.css';
 import InfoBox from './InfoBox';
 import Map from "./Map";
+
 
 function App() {
   
@@ -42,54 +43,58 @@ function App() {
 
   return (
     <div className="app">
-      <div className="app__header">
+      <div className="app__left">
+        <div className="app__header">
 
-      {/*Header */}
-      <h1>covid tracker</h1>
+        {/*Header */}
+        <h1>covid tracker</h1>
 
-      {/* Title and search input dropdown field */}
-      <FormControl className="app__dropdown">
-        <Select variant="outlined" 
-          onChange={onCountryChange} value={country}>
-          <MenuItem value="worldwide">Worldwide</MenuItem>
-          {/*loop through all the countries as show a dropdown list of all the options*/}
+       {/* Title and search input dropdown field */}
+        <FormControl className="app__dropdown">
+         <Select variant="outlined" 
+            onChange={onCountryChange} value={country}>
+
+            <MenuItem value="worldwide">Worldwide</MenuItem>
+            {/*loop through all the countries as show a dropdown list of all the options*/}
           
-          {
-            countries.map(country => (
-              <MenuItem value={country.value}>{country.name}</MenuItem>
-            ))
-          }
+            {
+              countries.map(country => (
+                <MenuItem value={country.value}>{country.name}</MenuItem>
+              ))
+            }
 
           </Select>
-      </FormControl>
+        </FormControl>
     </div>
     
-    {/* InfoBoxes section */}
-    <div className="app__stats">
+      {/* InfoBoxes section */}
+     <div className="app__stats">
 
-      {/*InfoBoxes title = "Coronavirus cases"*/}
-      <InfoBox title="Coronavirus cases" cases={10000} total={2000}/>
+        {/*InfoBoxes title = "Coronavirus cases"*/}
+        <InfoBox title="Coronavirus cases" cases={10000} total={2000}/>
       
-      {/*InfoBoxes title = "Coronavirus recovers"*/}
-      <InfoBox title="Recovered" cases={20000} total={3000}/>
+        {/*InfoBoxes title = "Coronavirus recovers"*/}
+        <InfoBox title="Recovered" cases={20000} total={3000}/>
 
-      {/*InfoBoxes title = Coronavirus deaths*/}
-      <InfoBox title="Deaths" cases={30000} total={4000}/>
+        {/*InfoBoxes title = Coronavirus deaths*/}
+        <InfoBox title="Deaths" cases={30000} total={4000}/>
       
-    </div>
-      
+      </div>
     
-    {/*Table*/}
-      {/*Graph*/}
+        {/* Map */}
+        <Map/>
 
-      {/* Map */}
-          <Map></Map>
+      </div>
 
-      {/*first commit from macbook*/}
+      <Card className="app__right">
+        <CardContent>
+          <h3>live cases by country</h3>
+          <h3>worldwide new cases</h3>
+          {/*Table*/}
 
-
-      {/* i am typing this to see if i can not get merge conflicts*/}
-
+          {/*Graph*/}
+        </CardContent>
+      </Card>
     </div>
   );
 }
