@@ -72,7 +72,8 @@ function App() {
 
        {/* Title and search input dropdown field */}
         <FormControl className="app__dropdown">
-         <Select variant="outlined" 
+         <Select 
+            variant="outlined" 
             onChange={onCountryChange} value={country}>
 
             <MenuItem value="worldwide">Worldwide</MenuItem>
@@ -92,13 +93,13 @@ function App() {
      <div className="app__stats">
 
         {/*InfoBoxes title = "Coronavirus cases"*/}
-        <InfoBox title="Coronavirus cases" cases={10000} total={2000}/>
+        <InfoBox title="Coronavirus cases" cases={countryInfo.todayCases} total={countryInfo.cases}/>
       
         {/*InfoBoxes title = "Coronavirus recovers"*/}
-        <InfoBox title="Recovered" cases={20000} total={3000}/>
+        <InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered}/>
 
         {/*InfoBoxes title = Coronavirus deaths*/}
-        <InfoBox title="Deaths" cases={30000} total={4000}/>
+        <InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths}/>
       
       </div>
     
