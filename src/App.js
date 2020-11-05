@@ -1,7 +1,8 @@
 import { FormControl, MenuItem, Select } from '@material-ui/core';
 import React, { useState, useEffect} from 'react';
 import './App.css';
-import InfoBox from './InfoBox'
+import InfoBox from './InfoBox';
+import Map from "./Map";
 
 function App() {
   
@@ -75,18 +76,14 @@ function App() {
       {/*InfoBoxes title = Coronavirus deaths*/}
       <InfoBox title="Deaths" cases={30000} total={4000}/>
       
-      
-     
     </div>
       
-      
-      
-
-      {/*Table*/}
+    
+    {/*Table*/}
       {/*Graph*/}
 
       {/* Map */}
-
+          <Map></Map>
 
       {/*first commit from macbook*/}
 
