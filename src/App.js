@@ -3,6 +3,7 @@ import React, { useState, useEffect} from 'react';
 import './App.css';
 import InfoBox from './InfoBox';
 import Map from "./Map";
+import Table from "./Table";
 
 function App() {
   
@@ -10,6 +11,7 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
 
   //display worldwide stats as the initial stats
   useEffect(()=> {
@@ -41,6 +43,7 @@ function App() {
             value: country.countryInfo.iso2 //UK, USA, FR
           }
         ));
+        setTableData(data);
         setCountries(countries);
       });
     };
@@ -122,7 +125,7 @@ function App() {
           <h3>live cases by country</h3>
           <h3>worldwide new cases</h3>
           {/*Table*/}
-
+          <Table countries={tableData}/>
           {/*Graph*/}
         </CardContent>
       </Card>
