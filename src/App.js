@@ -12,30 +12,16 @@ function App() {
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
 
-  //changes value in dropdown list of what country is selected
-  const onCountryChange = async (event) => {
-    const countryCode = event.target.value;
-    // console.log("works >>>>", countryCode);
-    setCountry(countryCode);
-
-    //if country code is worldwide
-    const url = countryCode === 'worldwide' 
-    ? `https://disease.sh/v3/covid-19/countries/all` 
-    //else url is based on country code
-    : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
-
-    await fetch(url)
-    //convert to json
-    .then(response => response.json())
-    //set country based on data
-    .then(data => {
-      //set country
-      setCountry(countryCode);
+  //display worldwide stats as the initial stats
+  useEffect(()=> {
+    fetch("https://disease.sh/v3/covid-19/all")
+    .then((response) => response.json())
+    .then((data) => {
       //set country info
       setCountryInfo(data);
     });
-    
-  };
+  }, []);
+
 
   console.log('COUNTRY INFO >>>', countryInfo);
 
@@ -61,6 +47,30 @@ function App() {
     };
     getCountriesData();
   }, []);
+  
+  //changes value in dropdown list of what country is selected
+  const onCountryChange = async (event) => {
+    const countryCode = event.target.value;
+    // console.log("works >>>>", countryCode);
+    setCountry(countryCode);
+
+    //if country code is worldwide
+    const url = countryCode === 'worldwide' 
+    ? `https://disease.sh/v3/covid-19/countries/all` 
+    //else url is based on country code
+    : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+
+    await fetch(url)
+    //convert to json
+    .then(response => response.json())
+    //set country based on data
+    .then(data => {
+      //set country
+      setCountry(countryCode);
+      //set country info
+      setCountryInfo(data);
+    });    
+  };
 
   return (
     <div className="app">
