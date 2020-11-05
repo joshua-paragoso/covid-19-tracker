@@ -11,7 +11,7 @@ function App() {
   //changes value in dropdown list of what country is selected
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-    console.log("works >>>>", countryCode);
+    // console.log("works >>>>", countryCode);
     setCountry(countryCode);
   }
 
@@ -42,10 +42,10 @@ function App() {
     <div className="app">
       <div className="app__header">
 
-      
+      {/*Header */}
       <h1>covid tracker</h1>
-      
-      {/*Drop down component */}
+
+      {/* Title and search input dropdown field */}
       <FormControl className="app__dropdown">
         <Select variant="outlined" 
           onChange={onCountryChange} value={country}>
@@ -61,12 +61,16 @@ function App() {
           </Select>
       </FormControl>
     </div>
-
-      {/*Header */}
-      {/* Title and search input dropdown field */}
+    
+    {/* InfoBoxes section */}
+    <div className="app__stats">
+      {/*InfoBoxes title = "Coronavirus cases"*/}
+      {/*InfoBoxes title = "Coronavirus recovers"*/}
       {/*InfoBoxes*/}
-      {/*InfoBoxes*/}
-      {/*InfoBoxes*/}
+    </div>
+      
+      
+      
 
       {/*Table*/}
       {/*Graph*/}
