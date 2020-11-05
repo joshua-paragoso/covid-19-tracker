@@ -10,13 +10,34 @@ function App() {
   /* State = how to write a varibale in react */
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
+  const [countryInfo, setCountryInfo] = useState({});
 
   //changes value in dropdown list of what country is selected
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
     // console.log("works >>>>", countryCode);
     setCountry(countryCode);
-  }
+
+    //if country code is worldwide
+    const url = countryCode === 'worldwide' 
+    ? `https://disease.sh/v3/covid-19/countries/all` 
+    //else url is based on country code
+    : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+
+    await fetch(url)
+    //convert to json
+    .then(response => response.json())
+    //set country based on data
+    .then(data => {
+      //set country
+      setCountry(countryCode);
+      //set country info
+      setCountryInfo(data);
+    });
+    
+  };
+
+  console.log('COUNTRY INFO >>>', countryInfo);
 
   //https://disease.sh/v3/covid-19/countries
 
