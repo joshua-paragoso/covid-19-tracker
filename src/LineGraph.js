@@ -3,6 +3,8 @@ import { Line } from "react-chartjs-2";
 import numeral from "numeral";
 
 const options = {
+  
+  //hide legend
   legend: {
     display: false,
   },
@@ -12,6 +14,8 @@ const options = {
     },
   },
   maintainAspectRatio: false,
+  
+  //shows the black over to show numbers of cases
   tooltips: {
     mode: "index",
     intersect: false,
@@ -22,6 +26,7 @@ const options = {
     },
   },
   scales: {
+    //x axis 
     xAxes: [
       {
         type: "time",
@@ -31,6 +36,8 @@ const options = {
         },
       },
     ],
+
+    //y axis
     yAxes: [
       {
         gridLines: {
@@ -96,6 +103,7 @@ function LineGraph({casesType}) {
   return (
     <div>
       <h3> I am graph</h3>
+      {/* checks to see if data exist, returns undefined*/}
       {data?.length > 0 && (
       <Line
         data={{
