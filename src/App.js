@@ -120,7 +120,7 @@ function App() {
       </div>
     
         {/* Map */}
-        <Map/>
+        <Map />
 
       </div>
 
@@ -131,6 +131,7 @@ function App() {
           {/*Table*/}
           <Table countries={tableData}/>
           <h3>worldwide new cases</h3>
+
           {/*Graph*/}
           <LineGraph />
         </CardContent>
