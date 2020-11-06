@@ -2,4 +2,19 @@
     margin-top: 20px;
     overflow: scroll;
     height: 400px;
+    color: #6a5d5d;
+}
+
+/*set odd number entry to colored*/
+.table tr:nth-of-type(odd){
+    background-color: #f3f2f8;
+}
+
+.table tr{
+    display: flex;
+    justify-content: space-between;
+}
+
+.table td{
+    padding: 0.5rem;
 }
