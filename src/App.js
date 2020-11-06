@@ -2,7 +2,7 @@ import { FormControl, MenuItem, Select, Card, CardContent } from '@material-ui/c
 import React, { useState, useEffect} from 'react';
 import './App.css';
 import InfoBox from './InfoBox';
-import Map from "./Map";
+import MyMap from "./MyMap";
 import Table from "./Table";
 import { sortData } from "./util";
 import LineGraph from "./LineGraph";
@@ -120,7 +120,7 @@ function App() {
       </div>
     
         {/* Map */}
-        <Map />
+        <MyMap />
 
       </div>
 
