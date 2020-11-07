@@ -28,3 +28,10 @@
     background-size: cover;
     border-radius: 8px;
   }
+
+.info-confirmed,
+.info-recovered,
+.info-deaths {
+  font-size: 16px;
+  margin-top: 5px;
+}
