@@ -65,8 +65,8 @@ export const showDataOnMap = (data, casesType = "cases") =>
             className="info-flag"
             style={{ backgroundImage: `url(${country.countryInfo.flag})` }}
           ></div>
-          
-            <div className="info name">
+
+            <div className="info-name">
               {/*name of country */}
               {country.country}
             </div>
