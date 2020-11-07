@@ -2,6 +2,29 @@ import React from "react";
 import numeral from "numeral";
 import { Circle, Popup } from "react-leaflet";
 
+//dictionary object
+//shows appropriate thing to access whether it be cases, deaths, or recovered
+const casesTypeColors = {
+    cases: {
+      hex: "#CC1034",
+      rgb: "rgb(204, 16, 52)",
+      half_op: "rgba(204, 16, 52, 0.5)",
+      multiplier: 800,
+    },
+    recovered: {
+      hex: "#7dd71d",
+      rgb: "rgb(125, 215, 29)",
+      half_op: "rgba(125, 215, 29, 0.5)",
+      multiplier: 1200,
+    },
+    deaths: {
+      hex: "#fb4443",
+      rgb: "rgb(251, 68, 67)",
+      half_op: "rgba(251, 68, 67, 0.5)",
+      multiplier: 2000,
+    },
+  };
+
 export const sortData = (data) => {
     const sortedData = [...data];
 
@@ -26,9 +49,19 @@ export const showDataOnMap = (data, casesType='cases') => (
 
         <Circle
             center={[country.countryInfo.lat, country.countryInfo.long]}
+            color={casesTypeColors[casesType].hex}
+            //go into dictionary, access casesType, it will get color
+            fillColor={casesTypeColors[casesType].hex}
             fillOpacity={0.4}
-        >
+            //calculation of circle size
+            radius={
+                Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
+            }
 
+        >
+            <Popup>
+                <h3> I am a pop up</h3>
+            </Popup>
         </Circle>
 
 

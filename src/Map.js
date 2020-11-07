@@ -1,8 +1,9 @@
 import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "./Map.css";
+import { showDataOnMap } from "./util";
 
-function Map({center, zoom }) {
+function Map({countries, casesType, center, zoom }) {
   return (
     <div className="map">
       
@@ -13,6 +14,7 @@ function Map({center, zoom }) {
         />
       {/*loop through and draw circles on screen to indicate cases
       big for more cases, small for less cases */}
+      {showDataOnMap(countries, casesType)}
       </MapContainer>
 
     </div>
