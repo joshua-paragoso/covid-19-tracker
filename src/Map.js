@@ -11,7 +11,8 @@ function Map({center, zoom }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-
+      {/*loop through and draw circles on screen to indicate cases
+      big for more cases, small for less cases */}
       </MapContainer>
 
     </div>
