@@ -126,14 +126,14 @@ function App() {
           {/*InfoBoxes title = "Coronavirus recovers"*/}
           <InfoBox
             title="Recovered"
-            cases={countryInfo.todayRecovered}
+            cases={prettyPrintStat(countryInfo.todayRecovered)}
             total={countryInfo.recovered}
           />
 
           {/*InfoBoxes title = Coronavirus deaths*/}
           <InfoBox
             title="Deaths"
-            cases={countryInfo.todayDeaths}
+            cases={prettyPrintStat(countryInfo.todayDeaths)}
             total={countryInfo.deaths}
           />
         </div>
