@@ -25,6 +25,7 @@ function App() {
   const [mapZoom, setMapZoom] = useState(3);
   
   const [mapCountries, setMapCountries] = useState([]);
+  const [casesType, setCasesType] = useState("cases");
 
   //display worldwide stats as the initial stats
   useEffect(() => {
@@ -118,6 +119,7 @@ function App() {
         <div className="app__stats">
           {/*InfoBoxes title = "Coronavirus cases"*/}
           <InfoBox
+            onClick={ (event) => setCasesType('cases')}
             title="Coronavirus cases"
             cases={prettyPrintStat(countryInfo.todayCases)}
             total={countryInfo.cases}
@@ -125,6 +127,7 @@ function App() {
 
           {/*InfoBoxes title = "Coronavirus recovers"*/}
           <InfoBox
+            onClick={ (event) => setCasesType('recovered')}
             title="Recovered"
             cases={prettyPrintStat(countryInfo.todayRecovered)}
             total={countryInfo.recovered}
@@ -132,6 +135,7 @@ function App() {
 
           {/*InfoBoxes title = Coronavirus deaths*/}
           <InfoBox
+            onClick={ (event) => setCasesType('deaths')}
             title="Deaths"
             cases={prettyPrintStat(countryInfo.todayDeaths)}
             total={countryInfo.deaths}
@@ -140,6 +144,7 @@ function App() {
 
         {/* Map */}
         <Map 
+          casesType={casesType}
           countries={mapCountries} 
           center={mapCenter} 
           zoom={mapZoom} 
