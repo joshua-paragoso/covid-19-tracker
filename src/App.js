@@ -122,7 +122,7 @@ function App() {
             onClick={ (event) => setCasesType('cases')}
             title="Coronavirus cases"
             cases={prettyPrintStat(countryInfo.todayCases)}
-            total={countryInfo.cases}
+            total={prettyPrintStat(countryInfo.cases)}
           />
 
           {/*InfoBoxes title = "Coronavirus recovers"*/}
@@ -130,7 +130,7 @@ function App() {
             onClick={ (event) => setCasesType('recovered')}
             title="Recovered"
             cases={prettyPrintStat(countryInfo.todayRecovered)}
-            total={countryInfo.recovered}
+            total={prettyPrintStat(countryInfo.recovered)}
           />
 
           {/*InfoBoxes title = Coronavirus deaths*/}
@@ -138,7 +138,7 @@ function App() {
             onClick={ (event) => setCasesType('deaths')}
             title="Deaths"
             cases={prettyPrintStat(countryInfo.todayDeaths)}
-            total={countryInfo.deaths}
+            total={prettyPrintStat(countryInfo.deaths)}
           />
         </div>
 
