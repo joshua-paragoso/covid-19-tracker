@@ -102,7 +102,7 @@ function LineGraph({casesType}) {
 
   return (
     <div>
-      <h3> I am graph</h3>
+      {/* <h3> I am graph</h3> */}
       {/* checks to see if data exist, returns undefined*/}
       {data?.length > 0 && (
       <Line
