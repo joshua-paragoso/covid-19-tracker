@@ -42,6 +42,13 @@ export const sortData = (data) => {
   return sortedData;
 };
 
+//pretty print stat and return nice string
+export const prettyPrintStat = (stat) =>
+  //if stat exist
+  stat ? `+${numeral(stat).format("0.0a")}` : "+0";
+  //if nonexistent, return 0 cases today
+
+
 //draw circles on the map with interactive tooltopp
 export const showDataOnMap = (data, casesType = "cases") =>
   //every time we step through data, its one country

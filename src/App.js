@@ -10,7 +10,7 @@ import "./App.css";
 import InfoBox from "./InfoBox";
 import Map from "./Map";
 import Table from "./Table";
-import { sortData } from "./util";
+import { sortData, prettyPrintStat} from "./util";
 import LineGraph from "./LineGraph";
 import "leaflet/dist/leaflet.css";
 
@@ -119,7 +119,7 @@ function App() {
           {/*InfoBoxes title = "Coronavirus cases"*/}
           <InfoBox
             title="Coronavirus cases"
-            cases={countryInfo.todayCases}
+            cases={prettyPrintStat(countryInfo.todayCases)}
             total={countryInfo.cases}
           />
 
