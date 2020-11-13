@@ -97,7 +97,7 @@ function App() {
       <div className="app__left">
         <div className="app__header">
           {/*Header */}
-          <h1>covid tracker</h1>
+          <h1>COVID-19 TRACKER</h1>
 
           {/* Title and search input dropdown field */}
           <FormControl className="app__dropdown">
