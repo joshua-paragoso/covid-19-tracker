@@ -123,6 +123,7 @@ function App() {
             onClick={(event) => setCasesType("cases")}
             isRed
             title="Coronavirus cases"
+            active={casesType === "cases"}
             cases={prettyPrintStat(countryInfo.todayCases)}
             total={prettyPrintStat(countryInfo.cases)}
           />
@@ -131,6 +132,7 @@ function App() {
           <InfoBox
             onClick={(event) => setCasesType("recovered")}
             title="Recovered"
+            active={casesType === "recovered"}
             cases={prettyPrintStat(countryInfo.todayRecovered)}
             total={prettyPrintStat(countryInfo.recovered)}
           />
@@ -140,6 +142,7 @@ function App() {
             onClick={(event) => setCasesType("deaths")}
             isRed
             title="Deaths"
+            active={casesType === "deaths"}
             cases={prettyPrintStat(countryInfo.todayDeaths)}
             total={prettyPrintStat(countryInfo.deaths)}
           />
