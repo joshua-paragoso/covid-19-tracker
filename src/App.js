@@ -5,26 +5,24 @@ import {
   Card,
   CardContent,
 } from "@material-ui/core";
-import React, { useState, useEffect } from "react";
 import "./App.css";
+import "leaflet/dist/leaflet.css";
+import { sortData, prettyPrintStat } from "./util";
+import React, { useState, useEffect } from "react";
 import InfoBox from "./InfoBox";
 import Map from "./Map";
 import Table from "./Table";
-import { sortData, prettyPrintStat} from "./util";
 import LineGraph from "./LineGraph";
-import "leaflet/dist/leaflet.css";
 
 function App() {
   /* State = how to write a varibale in react */
-  const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
-  const [tableData, setTableData] = useState([]);
-  const [mapCenter, setMapCenter] = 
-  useState({ lat: 34.80746, lng: -40.4796 });
-  const [mapZoom, setMapZoom] = useState(3);
-  
+  const [countries, setCountries] = useState([]);
   const [mapCountries, setMapCountries] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+  const [mapZoom, setMapZoom] = useState(3);
+  const [tableData, setTableData] = useState([]);
   const [casesType, setCasesType] = useState("cases");
 
   //display worldwide stats as the initial stats
@@ -64,6 +62,8 @@ function App() {
     getCountriesData();
   }, []);
 
+  console.log(casesType);
+
   //changes value in dropdown list of what country is selected
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
@@ -83,10 +83,11 @@ function App() {
       .then((data) => {
         //set country
         setCountry(countryCode);
+
         //set country info
         setCountryInfo(data);
 
-        setMapCenter([data.countryInfo.lat, data.countryInfo.lng]);
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
         setMapZoom(4);
       });
   };
@@ -119,7 +120,8 @@ function App() {
         <div className="app__stats">
           {/*InfoBoxes title = "Coronavirus cases"*/}
           <InfoBox
-            onClick={ (event) => setCasesType('cases')}
+            onClick={(event) => setCasesType("cases")}
+            isRed
             title="Coronavirus cases"
             cases={prettyPrintStat(countryInfo.todayCases)}
             total={prettyPrintStat(countryInfo.cases)}
@@ -127,7 +129,7 @@ function App() {
 
           {/*InfoBoxes title = "Coronavirus recovers"*/}
           <InfoBox
-            onClick={ (event) => setCasesType('recovered')}
+            onClick={(event) => setCasesType("recovered")}
             title="Recovered"
             cases={prettyPrintStat(countryInfo.todayRecovered)}
             total={prettyPrintStat(countryInfo.recovered)}
@@ -135,7 +137,8 @@ function App() {
 
           {/*InfoBoxes title = Coronavirus deaths*/}
           <InfoBox
-            onClick={ (event) => setCasesType('deaths')}
+            onClick={(event) => setCasesType("deaths")}
+            isRed
             title="Deaths"
             cases={prettyPrintStat(countryInfo.todayDeaths)}
             total={prettyPrintStat(countryInfo.deaths)}
@@ -143,16 +146,16 @@ function App() {
         </div>
 
         {/* Map */}
-        <Map 
+        <Map
           casesType={casesType}
-          countries={mapCountries} 
-          center={mapCenter} 
-          zoom={mapZoom} 
+          countries={mapCountries}
+          center={mapCenter}
+          zoom={mapZoom}
         />
-
       </div>
 
       <Card className="app__right">
+
         <CardContent>
           <h3>live cases by country</h3>
 
@@ -161,14 +164,12 @@ function App() {
           <h3>worldwide new {casesType}</h3>
 
           {/*Graph*/}
-          <LineGraph
-            casesType={casesType}
-          />
+          <LineGraph casesType={casesType} />
         </CardContent>
       </Card>
     </div>
   );
-}
+};
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
