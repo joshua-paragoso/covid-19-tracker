@@ -17,6 +17,7 @@ function Map({countries, casesType, center, zoom }) {
       {/*loop through and draw circles on screen to indicate cases
       big for more cases, small for less cases */}
       {showDataOnMap(countries, casesType)}
+      {/* </MapContainer> */}
       </LeafletMap>
 
     </div>
