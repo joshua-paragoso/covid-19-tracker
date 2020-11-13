@@ -164,10 +164,10 @@ function App() {
 
           {/*Table*/}
           <Table countries={tableData} />
-          <h3>worldwide new {casesType}</h3>
+          <h3 className="app__graphTitle">worldwide new {casesType}</h3>
 
           {/*Graph*/}
-          <LineGraph casesType={casesType} />
+          <LineGraph className="app__graph" casesType={casesType} />
         </CardContent>
       </Card>
     </div>

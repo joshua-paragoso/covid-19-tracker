@@ -81,7 +81,7 @@ const buildChartData = (data, casesType = "cases") => {
   return chartData;
 };
 
-function LineGraph({casesType}) {
+function LineGraph({casesType = "cases", ...props}) {
   const [data, setData] = useState({});
 
   //gets the last 120 days
@@ -103,7 +103,7 @@ function LineGraph({casesType}) {
   }, [casesType]);
 
   return (
-    <div>
+    <div className={props.className}>
       {/* <h3> I am graph</h3> */}
       {/* checks to see if data exist, returns undefined*/}
       {data?.length > 0 && (
