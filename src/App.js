@@ -25,6 +25,7 @@ function App() {
   const [tableData, setTableData] = useState([]);
   const [casesType, setCasesType] = useState("cases");
 
+//commmit from g5 laptop
   //display worldwide stats as the initial stats
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
